@@ -1,0 +1,22 @@
+CC=g++
+CFLAGS=-c -std=c++11
+SRC=src/
+
+all : package main.o
+	$(CC) main.o -o bin/main
+	rm -f main.o
+	chmod +x bin/main
+
+main.o: $(SRC)main.cpp
+	$(CC) $(CFLAGS) $(SRC)main.cpp
+
+package: 
+	mkdir -p bin
+	
+clean:
+	rm -rf *.o
+	rm -rf bin
+	
+run:
+	./bin/main
+	
